@@ -4,9 +4,7 @@ use embedded_graphics::geometry::Point;
 
 pub const DIAMETER: u32 = 10;
 
-const RADIUS: i32 = DIAMETER as i32 / 2;
 const SPEED: i32 = 1;
-
 const SCREEN_WIDHT: i32 = 128;
 const SCREEN_HEIGHT: i32 = 64;
 
@@ -29,10 +27,10 @@ impl Position {
         let dir = Position::new(x, y);
         let new_pos = *self + dir * SPEED;
 
-        let out_left = (new_pos.x - RADIUS) < 0;
-        let out_right = (new_pos.x + RADIUS) >= SCREEN_WIDHT;
-        let out_top = (new_pos.y - RADIUS) < 0;
-        let out_bottom = (new_pos.y + RADIUS) >= SCREEN_HEIGHT;
+        let out_left = (new_pos.x) < 0;
+        let out_right = (new_pos.x + DIAMETER as i32) >= SCREEN_WIDHT;
+        let out_top = (new_pos.y) < 0;
+        let out_bottom = (new_pos.y + DIAMETER as i32) >= SCREEN_HEIGHT;
 
         if !(out_left || out_right || out_top || out_bottom) {
             *self = new_pos;

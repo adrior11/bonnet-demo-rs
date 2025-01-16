@@ -47,8 +47,8 @@ fn main() {
     let button_pin_d = gpio.get(22).unwrap().into_input_pullup();
 
     let mut pos = Position::new(64, 32);
+    draw_circle(&mut display, &pos);
 
-    // TODO: Improve button processing like in raycast-rs
     while running.load(Ordering::SeqCst) {
         if button_pin_l.is_low() {
             pos.try_move(-1, 0);
