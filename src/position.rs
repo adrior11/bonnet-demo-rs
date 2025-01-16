@@ -21,7 +21,7 @@ impl Position {
         Self { x, y }
     }
 
-    pub fn to_point(&self) -> Point {
+    pub fn to_point(self) -> Point {
         Point::new(self.x, self.y)
     }
 
